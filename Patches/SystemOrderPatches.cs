@@ -10,7 +10,7 @@ namespace DucksInARow.Patches
     {
         static void Postfix( UpdateSystem updateSystem )
         {
-            updateSystem.World.GetOrCreateSystemManaged<DucksInARowSystem>( );
+            updateSystem.UpdateAt<DucksInARowSystem>( SystemUpdatePhase.ToolUpdate );
         }
     }    
 }

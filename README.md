@@ -1,34 +1,48 @@
 # DucksInARow Mod for Cities Skylines 2
 
 ## Overview
-Welcome to the "DucksInARow" mod for Cities Skylines 2! This is the initial release (v0.0.1) of a mod designed to enhance your city-building experience by adding advanced prop placement options.
+Welcome to the "DucksInARow" mod for Cities Skylines 2! Enhance your city-building experience with advanced prop and tree placement options. This mod is continuously evolving, bringing new features and improvements to your urban planning toolkit.
 
-### Features
-- **Toggle Options for Line Placement of Props**: Allows for the linear arrangement of props with a default spacing of 8 meters.
-- **Tree Placement Logic**: When placing trees (e.g., tree A followed by tree B), the mod attempts to distribute trees evenly along a line. However, due to the game's inherent placement logic, results may vary.
-- **No UI Yet**: Currently, the mod lacks a user interface, but you can monitor its output through the console log.
+### Latest Features in Update
+- **Better placement**: Oddities removed from the previous "dirtier" implementation.
+- **Line Visualization**: Visual aids for linear prop placement, enhancing accuracy and aesthetics.
+- **Corrected Random Rotation**: Improved random rotation logic for more natural and varied prop arrangements.
+- **Curve and Circle Modes**: New modes for placing props in curved or circular patterns, easily cycled with ALT+X when the tree tool is active.
+- **Adult Tree Toggle**: Use ALT+A to toggle between adult and sapling tree placements, offering more control over the maturity of your urban forestry.
+- **Right-Click to Cancel**: Easily cancel ongoing operations with a right-click, improving workflow efficiency.
+- **Finer Spacing Adjustment**: More precise control over the spacing between props, allowing for detailed customization.
+- **Optimised Generation**: The generation routine is limited per frame to ensure maximum performance.
+- **Bug Fixes and Optimizations**: Various bug fixes and performance improvements for a smoother experience.
+- **More to Come**: Stay tuned for future updates and enhancements.
+
+### Previous Features
+- **Toggle Options for Line Placement of Props**: Linear arrangement of props with a default spacing of 8 meters.
+- **Tree Placement Logic**: Even distribution of trees along a line, with varying results due to game logic.
+- **No UI Yet**: Monitor output through the console log, UI coming in future updates.
 - **Dependency**: Requires BepInEx5 for proper functionality.
 
 ### Key Shortcuts
-- **LEFT SHIFT**: While using the tree placement tool, toggles the mod's functionality on or off.
-- **UP ARROW/DOWN ARROW**: Increments or decrements the spacing between props by meters.
+- **LEFT SHIFT**: Toggle the mod's functionality on/off while using the tree placement tool.
+- **UP/DOWN ARROWS**: Adjust prop spacing.
+- **ALT+X**: Cycle through tree placement modes (line, curve, circle).
+- **ALT+A**: Toggle between adult and sapling trees.
 
 ## Installation
-Ensure you have BepInEx5 installed in your Cities Skylines 2 game. Download and install the "DucksInARow" mod either through the official GitHub repository or via Thunderstore.io.
+Install BepInEx5 for Cities Skylines 2. Download "DucksInARow" via the official GitHub repository or Thunderstore.io.
 
 ## Usage
-1. Activate the tree placement tool in Cities Skylines 2.
-2. Use the LEFT SHIFT key to toggle the mod's functionality.
-3. Place your trees and adjust spacing using the UP and DOWN arrows.
+1. Activate the tree placement tool.
+2. Toggle mod functions with LEFT SHIFT.
+3. Place trees and adjust with key shortcuts.
 
 ## Important Notes
-- **Experimental Nature**: This mod is currently in its experimental phase and quite rudimentary.
-- **Official Downloads**: To ensure safety and functionality, only download this mod from Thunderstore.io or this official GitHub page.
-- **Community Effort**: This mod is a proud creation of the Cities 2 Modding community.
+- **Experimental Phase**: This mod is rudimentary and under active development.
+- **Official Downloads**: Only download from Thunderstore.io or the GitHub page.
+- **Community Effort**: A proud creation of the Cities 2 Modding community.
 
 ## Disclaimer
-While we strive for accuracy in prop placement, due to the inherent logic of Cities Skylines 2, results are not always guaranteed. This mod is under continuous development, and feedback is greatly appreciated.
+Due to Cities Skylines 2's validation logic even with the bypass enabled, prop placements may be hidden by the game. We are looking to improve this. Feedback is welcomed for continuous improvement.
 
 ---
 
-We hope you enjoy enhancing your city-building experience with "DucksInARow"! Stay tuned for updates and new features.
+Enjoy "DucksInARow" and stay tuned for more updates and features to enhance your city-building experience!

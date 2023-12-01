@@ -7,33 +7,62 @@ using Unity.Jobs;
 
 namespace DucksInARow.Patches
 {
-    [HarmonyPatch( typeof( ObjectToolSystem ), "Apply" )]
-    class ObjectToolSystem_ApplyPatch
+    public enum CustomState
     {
-        enum CustomState
-        {
-            Default,
-            MouseDownPrepare,
-            MouseDown,
-            Dragging
-        }
+        Default,
+        MouseDownPrepare,
+        MouseDown,
+        Dragging
+    }
 
+    class ObjectToolSystemPatches
+    {
         static FieldInfo m_State = typeof( ObjectToolSystem ).GetField( "m_State", BindingFlags.NonPublic | BindingFlags.Instance );
         static FieldInfo m_LastRaycastPoint = typeof( ObjectToolSystem ).GetField( "m_LastRaycastPoint", BindingFlags.NonPublic | BindingFlags.Instance );
 
-        static void Prefix( ObjectToolSystem __instance, JobHandle inputDeps )
-        {
-            var state = ( CustomState ) ( int ) m_State.GetValue( __instance );
-
-            if ( state == CustomState.Default )
+        [HarmonyPatch( typeof( ObjectToolSystem ), "Apply" )]
+        class ObjectToolSystem_ApplyPatch
+        {            
+            static bool Prefix( ObjectToolSystem __instance, JobHandle inputDeps )
             {
-                var ducksInARow = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<DucksInARowSystem>( );
+                var state = ( CustomState ) ( int ) m_State.GetValue( __instance );
 
-                if ( ducksInARow.LineUpDucks )
+                if ( state == CustomState.Default )
                 {
-                    var lastRaycast = ( ControlPoint ) m_LastRaycastPoint.GetValue( __instance );
-                    ducksInARow.CheckForLinePlacement( lastRaycast.m_HitPosition );
+                    var ducksInARow = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<DucksInARowSystem>( );
+
+                    if ( ducksInARow.Model.LineUpDucks )
+                    {
+                        var lastRaycast = ( ControlPoint ) m_LastRaycastPoint.GetValue( __instance );
+
+                        if ( !ducksInARow.CheckForLinePlacement( lastRaycast.m_HitPosition ) )
+                        {
+                            m_State.SetValue( __instance, ( int ) CustomState.Default );
+                            return false;
+                        }
+                    }
                 }
+
+                return true;
+            }
+        }
+
+        [HarmonyPatch( typeof( ObjectToolSystem ), "Cancel" )]
+        class ObjectToolSystem_CancelPatch
+        {
+            static bool Prefix( ObjectToolSystem __instance, JobHandle inputDeps )
+            {
+                var state = ( CustomState ) ( int ) m_State.GetValue( __instance );
+
+                if ( state == CustomState.Default )
+                {
+                    var ducksInARow = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<DucksInARowSystem>( );
+
+                    if ( ducksInARow.Model.LineUpDucks )
+                        return !ducksInARow.Cancel( );
+                }
+
+                return true;
             }
         }
     }
