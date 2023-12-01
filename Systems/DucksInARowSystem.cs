@@ -132,7 +132,7 @@ namespace DucksInARow.Systems
             action.AddBinding( "<Keyboard>/leftShift" );
             action.performed += ctx =>
             {
-                if ( _toolSystem.activeTool is not ObjectToolSystem )
+                if ( _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab( ) )
                     return;
 
                 _model.LineUpDucks = !_model.LineUpDucks;
@@ -157,7 +157,7 @@ namespace DucksInARow.Systems
             action.AddBinding( "<Keyboard>/upArrow" );
             action.performed += ctx =>
             {
-                if ( !_model.LineUpDucks )
+                if ( !_model.LineUpDucks || _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab( ) )
                     return;
 
                 _model.Spacing += 0.25m;
@@ -175,7 +175,7 @@ namespace DucksInARow.Systems
             action.AddBinding( "<Keyboard>/downArrow" );
             action.performed += ctx =>
             {
-                if ( !_model.LineUpDucks )
+                if ( !_model.LineUpDucks || _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab( ) )
                     return;
 
                 if ( _model.Spacing <= 1 )
@@ -200,7 +200,7 @@ namespace DucksInARow.Systems
                 .With( "Button", "<Keyboard>/x" );
             action.performed += ctx =>
             {
-                if ( !_model.LineUpDucks )
+                if ( !_model.LineUpDucks || _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab( ) )
                     return;
 
                 var modesCount = Enum.GetValues( typeof( DuckInARowMode ) ).Length;
@@ -239,7 +239,7 @@ namespace DucksInARow.Systems
                 .With( "Button", "<Keyboard>/a" );
             action.performed += ctx =>
             {
-                if ( !_model.LineUpDucks )
+                if ( !_model.LineUpDucks || _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab() )
                     return;
 
                 _model.SpawnTreesAsAdult = !_model.SpawnTreesAsAdult;
@@ -250,11 +250,18 @@ namespace DucksInARow.Systems
             action.Enable( );
         }
 
+        private bool IsValidPrefab( )
+        {
+            var prefabEntity = GetPrefabEntity( );
+
+            return EntityManager.HasComponent<PlantData>( prefabEntity );
+        }
+
         protected override void OnUpdate( )
         {
             UpdateQueues( );
 
-            if ( _toolSystem.activeTool != _objectToolSystem )
+            if ( _toolSystem.activeTool != _objectToolSystem || !_model.LineUpDucks || _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab( ) )
             {
                 _model.IsWaitingSecondPlacement = false;
                 _model.IsWaitingThirdPlacement = false;
@@ -489,6 +496,9 @@ namespace DucksInARow.Systems
 
         public bool CheckForLinePlacement( float3 hitPosition )
         {
+            if ( !_model.LineUpDucks || _toolSystem.activeTool is not ObjectToolSystem || !IsValidPrefab( ) )
+                return true;
+
             if ( !_model.IsWaitingSecondPlacement )
             {
                 _model.StartPosition = hitPosition;
