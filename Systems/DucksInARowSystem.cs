@@ -1,13 +1,10 @@
-﻿using Colossal;
-using Colossal.Entities;
+﻿using Colossal.Entities;
 using Colossal.Mathematics;
 using DucksInARow.Models;
 using DucksInARow.PlacementSolvers;
 using Game;
-using Game.Areas;
 using Game.Audio;
 using Game.Common;
-using Game.Net;
 using Game.Objects;
 using Game.Prefabs;
 using Game.Rendering;
@@ -23,7 +20,7 @@ using UnityEngine.InputSystem;
 
 namespace DucksInARow.Systems
 {
-    public class DucksInARowSystem : GameSystemBase
+    public partial class DucksInARowSystem : GameSystemBase
     {
         private EntityQuery _soundQuery;
         private ObjectToolSystem _objectToolSystem;
@@ -35,7 +32,7 @@ namespace DucksInARow.Systems
         static FieldInfo m_Prefab = typeof( ObjectToolSystem ).GetField( "m_Prefab", BindingFlags.NonPublic | BindingFlags.Instance );
         static FieldInfo m_LastRaycastPoint = typeof( ObjectToolSystem ).GetField( "m_LastRaycastPoint", BindingFlags.NonPublic | BindingFlags.Instance );
 
-        private readonly DucksInARowModel _model =new DucksInARowModel();
+        private readonly DucksInARowModel _model = new DucksInARowModel();
 
         private List<Entity> Ducks
         {

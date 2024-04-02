@@ -1,0 +1,79 @@
+﻿<Publish>
+	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
+	<ModId Value="" />
+	<!--Name of the mod to display to players-->
+	<DisplayName Value="DucksInARow" />
+	<!--Short description of the mod-->
+	<ShortDescription Value="Place trees and bushes in lines. Visualise lines, place circles, curves and straights. More to come in the near future!" />
+	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
+	<!--LongDescription Value="Shared dependency pack for Cities Skylines 2, includes HarmonyX 2.2.2" /-->
+	<LongDescription># DucksInARow
+
+## Overview
+Welcome to the "DucksInARow" mod for Cities Skylines 2! Enhance your city-building experience with advanced prop and tree placement options. This mod is continuously evolving, bringing new features and improvements to your urban planning toolkit.
+
+### Features
+- **Line Visualization**: Visual aids for linear prop placement, enhancing accuracy and aesthetics.
+- **Random Rotation**: Improved random rotation logic for more natural and varied prop arrangements.
+- **Curve and Circle Modes**: Modes for placing props in curved or circular patterns, easily cycled with ALT+X when the tree tool is active.
+- **Adult Tree Toggle**: Use ALT+A to toggle between adult and sapling tree placements, offering more control over the maturity of your urban forestry.
+- **Right-Click to Cancel**: Easily cancel ongoing operations with a right-click, improving workflow efficiency.
+- **Finer Spacing Adjustment**: More precise control over the spacing between props, allowing for detailed customization.
+- **Optimised Generation**: The generation routine is limited per frame to ensure maximum performance even on slow machines with few CPU cores.
+- **More to Come**: Stay tuned for future updates and enhancements.
+
+### Previous Features
+- **Toggle Options for Line Placement of Props**: Linear arrangement of props with a default spacing of 8 meters.
+- **Tree Placement Logic**: Even distribution of trees along a line, with varying results due to game logic.
+- **No UI Yet**: Coming soon!
+
+### Key Shortcuts
+- **LEFT SHIFT**: Toggle the mod's functionality on/off while using the tree placement tool.
+- **UP/DOWN ARROWS**: Adjust prop spacing.
+- **ALT+X**: Cycle through tree placement modes (line, curve, circle).
+- **ALT+A**: Toggle between adult and sapling trees.
+
+## Usage
+1. Activate the tree placement tool.
+2. Toggle mod functions with LEFT SHIFT.
+3. Place trees and adjust with key shortcuts.
+
+## Support and Feedback
+- For support, questions, or feedback, feel free to reach out by joining the Cities2Modding Discord.
+
+**Please Note**: Comments on Paradox Mods are not the best place for reporting issues or getting help. Joining our discord will be the best way to get resolve any issues you may encounter.
+
+## Important Notes
+- **Experimental Phase**: This mod is rudimentary and under active development.
+- **Community Effort**: A proud creation of the Cities2Modding community.
+
+## Disclaimer
+Due to Cities Skylines 2's validation logic even with the bypass enabled, prop placements may be hidden by the game. You will need an anarchy mod for those situations.
+
+---
+
+Enjoy "DucksInARow" and stay tuned for more updates and features to enhance your city-building experience!</LongDescription>
+	<!--Thumbnail-->
+	<Thumbnail Value="Properties/Thumbnail.png" />
+	<!--Screenshot, can be set multiple times-->
+	<Screenshot Value="" />
+	<!--Tag, can be set multiple times-->
+	<Tag Value="Code Mod" />
+	<!--Link to the forum post where the mod can be discussed-->
+	<ForumLink Value="" />
+	<!--Version of the mod-->
+	<ModVersion Value="1.1.0" />
+	<!--Recommended version of the base game to use the mod-->
+	<GameVersion Value="1.1.*" />
+	
+	<!-- Dependency Pack -->
+	<Dependency Id="77209" />
+	
+	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
+	<ChangeLog Value="Github link update" />
+	<!--ChangeLog>
+	</ChangeLog-->
+	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
+	<ExternalLink Type="discord" Url="https://discord.gg/Fc6KuuBkRr" />
+	<ExternalLink Type="github" Url="https://github.com/Cities2Modding/FindStuff" />
+</Publish>
